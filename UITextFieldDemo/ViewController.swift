@@ -8,13 +8,25 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet var nameLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
-
+    @IBAction func onChangeToBlueButtonTapped(_ sender: UIButton) {
+        nameLabel.backgroundColor = .blue
+        nameLabel.textColor = .white
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameLabel.text = textField.text
+        textField.resignFirstResponder()
+        textField.text = ""
+        return true
+    }
+    
 }
 
